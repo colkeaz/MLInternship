@@ -1,0 +1,147 @@
+{
+  "generated_utc": "2026-11-13T14:07:15Z",
+  "lane": "Ranking Signal Analysis",
+  "rule": {
+    "plain_words": "page 2, enough impressions to matter, fewer clicks than pages at the same position; score by clicks left behind with volume capped",
+    "score": "min(impressions, 5000) * (expected_ctr_at_position - ctr) / 100",
+    "expected_ctr": "median CTR of the feature month in 0.5-position bins (n>=50), band fallback",
+    "zone": {
+      "position_min": 11,
+      "position_max": 21,
+      "impressions_min": 500
+    },
+    "cap_impressions": 5000,
+    "reason_code": "page2_position_ctr_gap",
+    "action": "review_title_meta",
+    "label": "position worsens by >= 3 month over month"
+  },
+  "signals": {
+    "ctr_by_position_band": {
+      "1-4": {
+        "n": 16414,
+        "median_ctr_pct": 0.249
+      },
+      "11-21": {
+        "n": 15527,
+        "median_ctr_pct": 0.124
+      },
+      "21+": {
+        "n": 18874,
+        "median_ctr_pct": 0.0
+      },
+      "4-11": {
+        "n": 37095,
+        "median_ctr_pct": 0.194
+      },
+      "<1": {
+        "n": 572,
+        "median_ctr_pct": 0.06
+      }
+    },
+    "slip_by_volume_band": {
+      "100-500": {
+        "n": 27498,
+        "slip_pct": 30.068
+      },
+      "10k+": {
+        "n": 5877,
+        "slip_pct": 11.179
+      },
+      "2k-10k": {
+        "n": 23944,
+        "slip_pct": 21.955
+      },
+      "500-2k": {
+        "n": 31163,
+        "slip_pct": 32.673
+      }
+    },
+    "verdicts": {
+      "ctr_vs_position": "CONFIRMED",
+      "volume_as_risk": "OPPOSITE"
+    }
+  },
+  "april": {
+    "frame_pages": 88482,
+    "clients": 42,
+    "frame_base_rate_pct": 27.54,
+    "zone_pages": 9496,
+    "zone_base_rate_pct": 43.68,
+    "queue_pages": 3838,
+    "queue_base_rate_pct": 50.47,
+    "precision": {
+      "p@10": 40.0,
+      "p@20": 60.0,
+      "p@50": 66.0,
+      "p@100": 63.0
+    }
+  },
+  "may_out_of_sample": {
+    "frame_pages": 93247,
+    "frame_base_rate_pct": 45.67,
+    "zone_pages": 10194,
+    "zone_base_rate_pct": 50.11,
+    "queue_pages": 3765,
+    "queue_base_rate_pct": 61.43,
+    "precision": {
+      "p@10": 60.0,
+      "p@20": 50.0,
+      "p@50": 58.0,
+      "p@100": 55.0
+    }
+  },
+  "queue_health": {
+    "zero_click_share_pct": 53.7,
+    "top10_slips": 4,
+    "top20_slips": 12,
+    "top50_slips": 33,
+    "distinct_clients_top50": 9,
+    "median_impressions_top10": 5705,
+    "median_impressions_queue": 1158
+  },
+  "starter_continuity": {
+    "measured_pages": 28795,
+    "outcome": "trend_direction == down (trailing 90 days, not a forward window)",
+    "down_share_pct": 56.4,
+    "ctr_by_position_band": {
+      "1-4": {
+        "n": 1984,
+        "median_ctr_pct": 0.15
+      },
+      "11-21": {
+        "n": 6671,
+        "median_ctr_pct": 0.1
+      },
+      "21+": {
+        "n": 8136,
+        "median_ctr_pct": 0.0
+      },
+      "4-11": {
+        "n": 11912,
+        "median_ctr_pct": 0.15
+      },
+      "<1": {
+        "n": 92,
+        "median_ctr_pct": 0.0
+      }
+    },
+    "down_by_volume_band": {
+      "10k+": {
+        "n": 3602,
+        "down_pct": 52.36
+      },
+      "2k-10k": {
+        "n": 6613,
+        "down_pct": 61.303
+      },
+      "500-2k": {
+        "n": 6511,
+        "down_pct": 61.757
+      },
+      "<500": {
+        "n": 12069,
+        "down_pct": 52.142
+      }
+    }
+  }
+}
